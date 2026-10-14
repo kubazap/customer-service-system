@@ -1,72 +1,72 @@
-# System Obsługi Klienta
+# Customer Service System
 
-Projekt aplikacji webowej napisany w Java Spring Boot z wykorzystaniem PostgreSQL oraz Thymeleaf. Aplikacja umożliwia zarządzanie wizytami, klientami oraz pracownikami z zaimplementowanym mechanizmem dwuetapowej weryfikacji (TOTP).
+A web application project written in Java Spring Boot using PostgreSQL and Thymeleaf. The application allows you to manage appointments, customers and employees, and includes a two-step verification mechanism (TOTP).
 
-## 🚀 Jak uruchomić projekt lokalnie?
+## How to run the project locally
 
-Aby uruchomić aplikację lokalnie, wykonaj następujące kroki:
+To run the application locally, follow these steps:
 
-### 1. Uruchom serwer PostgreSQL
+### 1. Start the PostgreSQL server
 
-Upewnij się, że masz uruchomioną usługę **PostgreSQL**.
+Make sure the **PostgreSQL** service is running.
 
-### 2. Stwórz bazę danych
+### 2. Create the database
 
-Zaloguj się do lokalnej bazy danych PostgreSQL i utwórz nową bazę danych o nazwie:
+Log in to your local PostgreSQL database and create a new database named:
 
 ```sql
 CREATE DATABASE system_obslugi_klienta;
 ```
 
-### 3. Ustaw wymagane zmienne środowiskowe
+### 3. Set the required environment variables
 
-W środowisku uruchomieniowym (np. IntelliJ IDEA → **Edit Configurations → Environment variables**) ustaw poniższe zmienne:
+In your run environment (e.g. IntelliJ IDEA → **Edit Configurations → Environment variables**), set the following variables:
 
-| Zmienna środowiskowa    | Opis                                                |
-|-------------------------|-----------------------------------------------------|
-| `SPRING_MAIL_USERNAME`  | Login SMTP wygenerowany w Brevo (np. `user@smtp-brevo.com`) |
-| `SPRING_MAIL_PASSWORD`  | Hasło SMTP wygenerowane w Brevo                     |
-| `EMAIL_SENDER_EMAIL`    | Zweryfikowany adres nadawcy e-mail (np. `kontakt@twojadomena.pl`) |
-| `db_username`           | Nazwa użytkownika PostgreSQL (np. `postgres`)       |
-| `db_password`           | Hasło użytkownika PostgreSQL                        |
+| Environment variable    | Description                                                 |
+|-------------------------|-------------------------------------------------------------|
+| `SPRING_MAIL_USERNAME`  | SMTP login generated in Brevo (e.g. `user@smtp-brevo.com`)  |
+| `SPRING_MAIL_PASSWORD`  | SMTP password generated in Brevo                            |
+| `EMAIL_SENDER_EMAIL`    | Verified sender email address (e.g. `contact@yourdomain.com`) |
+| `db_username`           | PostgreSQL username (e.g. `postgres`)                       |
+| `db_password`           | PostgreSQL user password                                    |
 
-**Przykład konfiguracji w IntelliJ:**  
+**Example configuration in IntelliJ:**
 ```
-SPRING_MAIL_USERNAME=user@smtp-brevo.com;SPRING_MAIL_PASSWORD=twoje-haslo-smtp;EMAIL_SENDER_EMAIL=kontakt@twojadomena.pl;db_username=postgres;db_password=secret
+SPRING_MAIL_USERNAME=user@smtp-brevo.com;SPRING_MAIL_PASSWORD=your-smtp-password;EMAIL_SENDER_EMAIL=contact@yourdomain.com;db_username=postgres;db_password=secret
 ```
 
-### 4. Uruchom projekt
+### 4. Run the project
 
-Uruchom projekt z poziomu IDE (np. IntelliJ IDEA) lub za pomocą Maven:
+Run the project from your IDE (e.g. IntelliJ IDEA) or with Maven:
 
 ```bash
 ./mvnw spring-boot:run
 ```
 
-Aplikacja będzie dostępna pod adresem:
+The application will be available at:
 ```
 http://localhost:8080
 ```
 
-### 5. Import danych początkowych do bazy danych
+### 5. Import the initial data into the database
 
-Zaimportuj dane początkowe korzystając z pliku SQL, który znajduje się w projekcie:
+Import the initial data using the SQL file included in the project:
 
 ```
 src/main/resources/static/databases/all.sql
 ```
 
-Możesz to zrobić np. za pomocą narzędzia `psql` w konsoli:
+You can do this, for example, with the `psql` tool in the console:
 
 ```bash
-psql -U postgres -d system_obslugi_klienta -f sciezka_do_pliku/all.sql
+psql -U postgres -d system_obslugi_klienta -f path/to/all.sql
 ```
 
-## 📦 Technologie wykorzystane w projekcie
+## Technologies used in the project
 
-- **Spring Boot** – Framework aplikacji webowej
-- **PostgreSQL** – Baza danych
-- **Thymeleaf** – Silnik szablonów HTML
-- **Spring Security** – Mechanizm uwierzytelniania (z TOTP)
-- **Brevo (Sendinblue)** – Obsługa e-mail SMTP
-- **Bootstrap 4** – Frontend
+- **Spring Boot** – web application framework
+- **PostgreSQL** – database
+- **Thymeleaf** – HTML template engine
+- **Spring Security** – authentication mechanism (with TOTP)
+- **Brevo (Sendinblue)** – SMTP email service
+- **Bootstrap 4** – frontend
